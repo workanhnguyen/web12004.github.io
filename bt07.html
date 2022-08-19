@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML 07</title>
+    <style>
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1" width="80%">
+      <caption>
+        <b>KẾT QUẢ HỌC TẬP</b>
+      </caption>
+      <thead bgcolor="lightgrey">
+        <tr>
+          <th rowspan="2" width="300px">Họ tên</th>
+          <th colspan="3" width="300px">Môn học</th>
+          <th rowspan="2" width="100px">Kết quả</th>
+        </tr>
+        <tr>
+          <th width="100px">Toán</th>
+          <th width="100px">Văn</th>
+          <th width="100px">Ngoại ngữ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Trần Văn Thành</td>
+          <td align="center">8</td>
+          <td align="center">5</td>
+          <td align="center">7</td>
+          <td bgcolor="yellow" align="center">Đạt</td>
+        </tr>
+        <tr>
+          <td>Lê Thanh Sơn</td>
+          <td align="center">4</td>
+          <td align="center">9</td>
+          <td align="center">6</td>
+          <td bgcolor="red" align="center">
+            <font color="white">Không đạt</font>
+          </td>
+        </tr>
+        <tr>
+          <td>Nguyễn Thị Tuyết</td>
+          <td align="center">8</td>
+          <td align="center">9</td>
+          <td align="center">5</td>
+          <td bgcolor="yellow" align="center">Đạt</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">Tổng số học sinh đạt</td>
+          <td align="center">2</td>
+        </tr>
+      </tfoot>
+    </table>
+    <p id="back-btn" align="center"><a href="./web.html">Về trang HTML</a></p>
+  </body>
+</html>

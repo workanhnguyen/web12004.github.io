@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVASCRIPT 10</title>
+</head>
+<style>
+    #main {
+        border: 2px solid green;
+        width: 50%;
+        margin: auto;
+    }
+
+    #back-btn {
+        border: none;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+</style>
+<script>
+    function Reverse() {
+        //Lấy giá trị từ id = init
+        var text = document.getElementById("init").value;
+        //Lấy giá trị từ id = init
+        const arr = text.split(" ");
+        var kq = "";
+        //Duyệt ngược và chép giá trị của mảng vào biến kq
+        for (var i = arr.length - 1; i >= 0; i--) {
+            kq += arr[i] + " ";
+        }
+        //Xuất ra
+        document.getElementById("init").value = kq.trim();
+    }
+    function Normalize() {
+        //Lấy giá trị từ id = init
+        var text = document.getElementById("init").value;
+        //Xóa khoảng trắng 2 đầu chuỗi
+        text = text.trim();
+        //Lấy giá trị từ id = init
+        const arr = text.split(" ");
+        var kq = "";
+        for (var i = 0; i < arr.length; i++) {
+            //Nếu phần tử có giá trị khác rỗng ""
+            if (arr[i] != "") {
+                //Khai báo biến tạm để lưu giá trị phần tử i và viết thường 
+                var temp = arr[i].toLowerCase();
+                //Chia biến chuỗi tạm thành mảng chứa từng kí tự
+                const cap = temp.split("");
+                //Viết hóa chữ cái đầu
+                cap[0] = cap[0].toUpperCase();
+                //Gán mảng trở lại chuỗi
+                temp = cap.join("");
+                //Gán ngược lại cho phần tử thứ i
+                arr[i] = temp;
+                //Chép kết quả
+                kq += arr[i] + ' ';
+            }
+        }
+        //Xuất và xóa khoảng trắng
+        document.getElementById("init").value = kq.trim();
+    }
+</script>
+<body>
+    <div id="main">
+        <table>
+            <caption><h2>XỬ LÝ CHUỖI</h2></caption>
+            <tr>
+                <td>Chuỗi ban đầu:</td>
+                <td>
+                    <input type="text" id="init">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="button" onclick="Reverse()">Đảo chuỗi</button>
+                    <button type="button" onclick="Normalize()">Chuẩn hóa chuỗi</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+</body>
+</html>

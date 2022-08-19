@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 13</title>
+  </head>
+  <style>
+    #kq2 {
+      padding: 10px;
+      line-height: 30px;
+    }
+
+    #back-btn {
+      border: none;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+
+    #back-btn a {
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 10px;
+      color: white;
+      background: linear-gradient(to bottom, #f0355c, #f25e4c);
+    }
+
+    #back-btn a:hover {
+      background: #6150ff;
+    }
+  </style>
+  <script>
+    function Default() {
+      document.getElementById("kq1").style.color = "black";
+      document.getElementById("kq2").style.backgroundColor = "white";
+      document.getElementById("kq2").style.color = "black";
+      document.getElementById("kq2").style.fontWeight = "normal";
+    }
+    function Change() {
+      document.getElementById("kq1").style.color = "red";
+      document.getElementById("kq2").style.backgroundColor = "#0b0fd8";
+      document.getElementById("kq2").style.color = "yellow";
+      document.getElementById("kq2").style.fontWeight = "bold";
+    }
+  </script>
+  <body>
+    <h2 id="kq1">Thay đổi Style</h2>
+    <form action="">
+      <input type="radio" name="choice" onchange="Default()" /> Mặc định <br />
+      <input type="radio" name="choice" onchange="Change()" /> Áp dụng Style
+    </form>
+    <div id="kq2">
+      Click vào tùy chọn "Mặc định" để chuyển về định dạng mặc định <br />
+      Click vào tùy chọn "Áp dụng Style" để áp dụng style định dạng.
+    </div>
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

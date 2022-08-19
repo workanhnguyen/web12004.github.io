@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML 08</title>
+    <style>
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <img
+      src="./Images/mapVN.jpg"
+      usemap="#mapVN"
+      width="1654px"
+      height="2339px"
+      alt="Bản đồ hành chính Việt Nam"
+    />
+    <map name="mapVN">
+      <area
+        shape="circle"
+        coords="432, 565, 30"
+        href="https://hanoi.gov.vn/home"
+        title="Cổng thông tin điện tử Hà Nội"
+        target="_blank"
+      />
+      <area
+        shape="poly"
+        coords="559, 996, 578, 990, 587, 975, 657, 1027, 638, 1027, 633, 1039, 618, 1046, 597, 1044, 557, 1018"
+        href="https://thuathienhue.gov.vn/vi-vn/"
+        title="Cổng thông tin điện tử Huế"
+        target="_blank"
+      />
+      <area
+        shape="rect"
+        coords="500, 1532, 560, 1576"
+        href="https://hochiminhcity.gov.vn/"
+        title="Cổng thông tin điện tử TP.HCM"
+        target="_blank"
+      />
+    </map>
+    <p id="back-btn" align="center"><a href="./web.html">Về trang HTML</a></p>
+  </body>
+</html>

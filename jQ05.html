@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 05</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $("img").mouseover(function () {
+          $(this).animate({
+            width: '+=150px'
+          })
+        });
+
+        $("img").mouseleave(function () {
+          $(this).css("width", "fit-content");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <img src="/Images/js14-chicken.png" alt="Ảnh con gà" />
+    <p id="back-btn" align="center">
+      <a href="/jquery.html">Về trang JQUERY</a>
+    </p>
+  </body>
+</html>

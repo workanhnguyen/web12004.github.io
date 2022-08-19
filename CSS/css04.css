@@ -1,0 +1,30 @@
+* {
+    padding: 7px;
+}
+body {
+    margin: 10px;
+    border: 2px solid grey;
+    font-family: Helvetica, arial, sans-serif;
+}
+h1, p > span {
+    background-color: grey;
+    border: 2px solid black;
+}
+span {
+    padding: 3px;
+}
+p {
+    border: 2px solid grey;
+}
+p:last-child {
+    border: 2px dashed blue;
+}
+p:last-child > span {
+    border: 1px dotted red;
+}
+img {
+    border: 2px double grey;
+    border-spacing: 10px;
+    width: 200px;
+    height: 200px;
+}

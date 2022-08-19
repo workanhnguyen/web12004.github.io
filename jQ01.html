@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY 01</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function checkSimilar(string) {
+            const list = $('ul').children();
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].innerHTML.toUpperCase() === string.toUpperCase()) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        $(document).ready(function() {
+            $('input#name-subject').keypress(function(event) {
+                var key = event.keyCode;
+                var str = $('input#name-subject').val();
+                str = str.trim();
+                if(key == '13' && str && checkSimilar(str) === false) {
+                    $('ul.subjects').append(`<li>${str}</li>`);
+                    $('input#name-subject').val("");
+                }  
+            });
+
+            $('button').click(function() {
+                var str = $('input#name-subject').val();
+                str = str.trim();
+                    if (str && checkSimilar(str) === false) {
+                        $('ul.subjects').append(`<li>${str}</li>`);
+                        $('input#name-subject').val("");
+                    } 
+                    checkSimilar(str);
+            });
+        });
+    </script>
+    <style>
+        #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+</head>
+<body>
+    <label for="name-subject">Tên môn học: </label>
+    <input type="text" id="name-subject">
+    <ul class="subjects"></ul>
+    <button>Thêm môn học</button>
+    <p id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></p>
+</body>
+</html>

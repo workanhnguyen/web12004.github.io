@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 8</title>
+    <style>
+      #main {
+        width: 50%;
+        margin: auto;
+        border: 2px solid green;
+        padding: 10px;
+      }
+      #main p {
+        padding: 0;
+        margin: 0;
+        margin-top: 10px;
+        text-align: left;
+      }
+      form {
+        text-align: center;
+      }
+      form input {
+        margin-bottom: 10px;
+      }
+
+      #back-btn {
+        border: none;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      //Hàm khởi tạo mảng
+      function initArray() {
+        //Lấy số lượng phần tử
+        var element_number = document.getElementById("numberOfElement").value;
+        //Khởi tạo giá trị ngẫu nhiên
+        const arr = [element_number];
+        for (var i = 0; i < element_number; i++) {
+          arr[i] = Math.floor(Math.random() * 50);
+        }
+        //Gán mảng vào chuỗi để xuất
+        let str = "";
+        for (var i = 0; i < arr.length; i++) {
+          str += arr[i];
+          if (i < arr.length - 1) {
+            str += " ";
+          }
+        }
+        document.getElementById("init").innerHTML = str;
+      }
+
+      //Hàm sắp xếp mảng tăng
+      function increaseArray() {
+        //Lấy nội dung từ id = init
+        let getInit = document.getElementById("init").innerHTML.trim();
+        //Gán chuỗi vào mảng để xếp
+        var array = getInit.split(" ");
+        //Xếp tăng
+        array.sort(function (a, b) {
+          return a - b;
+        });
+        //Gán mảng vào chuỗi để xuất
+        let str = array.join(" ");
+        document.getElementById("increase").innerHTML = str;
+      }
+
+      //Hàm sắp xếp mảng giảm
+      function decreaseArray() {
+        //Lấy nội dung từ id = init
+        let getInit = document.getElementById("init").innerHTML;
+        //Gán chuỗi vào mảng để xếp
+        const array = getInit.split(" ");
+        //Xếp tăng
+        array.sort(function (a, b) {
+          return b - a;
+        });
+        //Gán mảng vào chuỗi để xuất
+        let str = array.join(" ");
+        document.getElementById("decrease").innerHTML = str;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <form>
+        Nhập số phần tử:
+        <input type="text" id="numberOfElement" autocomplete="off" /> <br />
+        <button type="button" onclick="initArray()">Tạo mảng</button>
+        <button type="button" onclick="increaseArray()">
+          Sắp xếp mảng tăng
+        </button>
+        <button type="button" onclick="decreaseArray()">
+          Sắp xếp mảng giảm</button
+        ><br />
+        <p>Mảng ban đầu: <span id="init"></span></p>
+        <p>Mảng tăng dần: <span id="increase"></span></p>
+        <p>Mảng giảm dần: <span id="decrease"></span></p>
+      </form>
+    </div>
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

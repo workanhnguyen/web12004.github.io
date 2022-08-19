@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 5</title>
+    <script>
+      var string1 = "HTML-JAVASCRIPT";
+      var string2 = string1
+      setInterval(RTL, 500);
+      setInterval(LTR, 500);
+      function RTL() {
+        let arr = string1.split("");
+        temp = arr.shift();
+        arr.push(temp);
+        document.getElementById("string1").innerHTML = arr.join("");
+        string1 = arr.join("");
+      }
+      function LTR() {
+        let arr = string2.split("");
+        temp = arr.pop();
+        arr.unshift(temp);
+        document.getElementById("string2").innerHTML = arr.join("");
+        string2 = arr.join("");
+      }
+    </script>
+    <style>
+      h1 {
+          width: 400px;
+          border: 1px solid blue;
+          text-align: center;
+          margin: auto;
+      }
+
+      h1#string2 {
+            margin-bottom: 50px;
+      }
+
+      #back-btn {
+            border: none;
+            margin: 0 auto;
+        }
+
+        #back-btn a {
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(to bottom,#f0355c, #f25e4c);
+        }
+
+        #back-btn a:hover {
+            background: #6150ff;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 id="string1">HTML-JAVASCRIPT</h1><br />
+    <h1 id="string2">HTML-JAVASCRIPT</h1>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+  </body>
+</html>

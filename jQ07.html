@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 07</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //Chuột vào vùng div
+        $("div#main > div").mouseover(function () {
+          var number = $(this).attr("stt");
+          $("div#main > div").css({
+            "font-size": "30px",
+            width: "150px",
+          });
+          $("div#main > div").eq(number).css({
+            "font-size": "60px",
+            "font-weight": "bold",
+            width: "400px",
+            color: "black",
+            background: "radial-gradient(closest-side at 50% 35%, white, gray)",
+          });
+        });
+        //Chuột ra khỏi vùng div
+        $("div#main > div").mouseleave(function () {
+          $("div#main > div").css({
+            "font-size": "70px",
+            "font-weight": "normal",
+            width: "200px",
+            color: "gray",
+            background: "lightgray",
+          });
+        });
+      });
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      div#main {
+        display: flex;
+        flex-direction: row;
+        width: 1000px;
+        height: 200px;
+        background-color: lightgray;
+        text-align: center;
+        line-height: 200px;
+        font-size: 70px;
+        color: gray;
+        margin: 0 auto;
+      }
+
+      div#main > div {
+        width: 200px;
+        height: 200px;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div stt="0">1</div>
+      <div stt="1">2</div>
+      <div stt="2">3</div>
+      <div stt="3">4</div>
+      <div stt="4">5</div>
+    </div>
+    <p id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></p>
+  </body>
+</html>

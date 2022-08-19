@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVASCRIPT 2</title>
+    <style>
+        #back-btn {
+            margin-top: 50px;
+        }
+
+        #back-btn a {
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(to bottom,#f0355c, #f25e4c);
+        }
+
+        #back-btn a:hover {
+            background: #6150ff;
+        }
+    </style>
+    <script>
+            var name = prompt("Tên:", "Nguyễn Văn A");
+            var yearOfBirth = prompt("Năm sinh:", "2002");
+            var d = new Date();
+            age = d.getFullYear() - yearOfBirth;
+            document.write( "Chào bạn: " + "<b>" + name + "</b>" + "<br/>" +
+            "Tuổi của bạn là: " + "<b>" +  age + "</b>");
+    </script>
+</head>
+<body>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+</body>
+</html>

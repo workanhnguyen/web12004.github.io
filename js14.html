@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 14</title>
+    <style>
+      #back-btn {
+        border: none;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      function Default() {
+        document.getElementById("img").src = "/Images/js14-chicken.png";
+      }
+      function Change() {
+        document.getElementById("img").src = "/Images/js14-penguin.png";
+      }
+    </script>
+  </head>
+  <body>
+    <h3>
+      Lần lượt di chuyển con trỏ chuột lên hình và ra khỏi hình để xem hiệu ứng
+      đổi hình.
+    </h3>
+    <img
+      src="/Images/js14-chicken.png"
+      id="img"
+      alt="chicken"
+      onmouseover="Change()"
+      onmouseout="Default()"
+    />
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

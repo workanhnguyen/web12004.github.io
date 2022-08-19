@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>HTML 12</title>
+    <style>
+      body {
+        width: 670px;
+        margin: auto;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <fieldset>
+        <legend align="center"><b>THÔNG TIN ĐĂNG KÍ</b></legend>
+        <br />
+        <table border="1" width="660px" bgcolor="#69ffff">
+          <tr>
+            <td><label for="name">Họ tên</label></td>
+            <td>
+              <input
+                type="text"
+                id="name"
+                placeholder="Nhập họ tên ở đây!"
+                name="name"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Giới tính</td>
+            <td>
+              <input type="radio" id="male" name="sex" value="male" />
+              <label for="male">Nam</label>
+              <input type="radio" id="female" name="sex" value="female" />
+              <label for="female">Nữ</label>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="birthday">Ngày sinh</label></td>
+            <td>
+              <input type="date" id="birthday" name="birthday" />
+            </td>
+          </tr>
+          <tr>
+            <td>Điều bạn quan tâm</td>
+            <td>
+              <input
+                type="checkbox"
+                id="kinhte"
+                name="concerns"
+                value="kinhte"
+              />
+              <label for="kinhte">Kinh tế</label>
+              <input type="checkbox" id="xahoi" name="concerns" value="xahoi" />
+              <label for="xahoi">Xã hội</label>
+              <input
+                type="checkbox"
+                id="giaitri"
+                name="concerns"
+                value="giaitri"
+              />
+              <label for="giaitri">Giải trí</label>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="address">Địa chỉ</label></td>
+            <td>
+              <textarea
+                id="address"
+                name="address"
+                rows="5"
+                cols="70"
+              ></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td><label for="study">Học vấn</label></td>
+            <td>
+              <input list="study" name="study" />
+              <datalist id="study">
+                <option>Đại học</option>
+                <option>Cao đẳng</option>
+                <option>Trung cấp</option>
+                <option>Trung học</option>
+                <option>Tiểu học</option>
+              </datalist>
+            </td>
+          </tr>
+          <tr align="center">
+            <td colspan="2">
+              <input type="submit" value="Gửi thông tin" />
+              <input type="reset" value="Nhập lại" />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
+    <p id="back-btn" align="center"><a href="./web.html">Về trang HTML</a></p>
+  </body>
+</html>

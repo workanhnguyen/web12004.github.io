@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 9</title>
+    <style>
+      #main {
+          border: 2px solid green;
+      }
+      body {
+        width: 50%;
+        margin: auto;
+      }
+      h2 {
+        text-transform: uppercase;
+      }
+
+      #back-btn {
+        border: none;
+        margin: 0 auto;
+        margin-top: 50px;
+      }
+
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      function Replace() {
+        var s1 = document.getElementById("init").value;
+        var s2 = document.getElementById("beReplaced").value;
+        var s3 = document.getElementById("replace").value;
+        //Nếu chuỗi bị thay thế rỗng thì không thực hiện
+        if (s2 == "") return;
+        //Tìm vị trí xuất hiện của chuỗi bị thay thế
+        var pos = s1.indexOf(s2, 0);
+        //Thay thế cho đến khi không tìm thấy chuỗi cần thay nữa
+        while (pos >= 0) {
+          s1 = s1.replace(s2, s3); //Thay thế
+          pos = s1.indexOf(s2); //Cập nhật vị trí tìm thấy
+        }
+        //Xuất ra
+        document.getElementById("init").value = s1;
+      }
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <table>
+        <caption>
+          <h2>Thay thế chuỗi</h2>
+        </caption>
+        <tr>
+          <td>Chuỗi ban đầu:</td>
+          <td><input type="text" id="init" style="width: 250px" /></td>
+        </tr>
+        <tr>
+          <td>Chuỗi bị thay thế</td>
+          <td><input type="text" id="beReplaced" /></td>
+        </tr>
+        <tr>
+          <td>Chuỗi thay thế</td>
+          <td><input type="text" id="replace" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><button type="button" onclick="Replace()">Thực hiện</button></td>
+        </tr>
+      </table>
+    </div>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 06</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      #main {
+        position: relative;
+        width: 600px;
+        height: 300px;
+        border: 2px solid black;
+        margin: 0 auto;
+      }
+      div.rect {
+        position: absolute;
+        width: 200px;
+        height: 100px;
+        top: 100px;
+        left: 200px;
+        background-color: red;
+      }
+      .btn {
+        width: 600px;
+        margin: 0 auto;
+        margin-top: 10px;
+      }
+      button {
+        display: inline-block;
+        text-align: center;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        //Lấy tọa độ hình chữ nhật hiện tại
+        var hinhchunhat = {
+          x: parseInt($("div.rect").css("left")),
+          y: parseInt($("div.rect").css("top")),
+        };
+        //Qua trái
+        $("button#left").click(function () {
+          if (hinhchunhat.x > 0) {
+            hinhchunhat.x -= 20;
+            $("div.rect").animate({
+              left: `${hinhchunhat.x}`
+            }, 200)
+          }
+        });
+
+        //Qua phải
+        $("button#right").click(function () {
+          if (hinhchunhat.x < 400) {
+            hinhchunhat.x += 20;
+            $("div.rect").animate({
+              left: `${hinhchunhat.x}`
+            }, 200)
+          }
+        });
+
+        //Lên trên
+        $("button#top").click(function () {
+          if (hinhchunhat.y > 0) {
+            hinhchunhat.y -= 20;
+            $("div.rect").animate({
+              top: `${hinhchunhat.y}`
+            }, 200)
+          }
+        });
+
+        //Xuống dưới
+        $("button#bottom").click(function () {
+          if (hinhchunhat.y < 200) {
+            hinhchunhat.y += 20;
+            $("div.rect").animate({
+              top: `${hinhchunhat.y}`
+            }, 200)
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div class="rect"></div>
+    </div>
+    <div class="btn">
+      <button id="left">Move left</button>
+      <button id="right">Move right</button>
+      <button id="top">Move up</button>
+      <button id="bottom">Move down</button>
+    </div>
+    <p id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></p>
+  </body>
+</html>

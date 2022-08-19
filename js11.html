@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 11</title>
+  </head>
+  <style>
+    #main {
+      width: 50%;
+      margin: auto;
+      border: 2px solid green;
+    }
+
+    #back-btn {
+      border: none;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+
+    #back-btn a {
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 10px;
+      color: white;
+      background: linear-gradient(to bottom, #f0355c, #f25e4c);
+    }
+
+    #back-btn a:hover {
+      background: #6150ff;
+    }
+  </style>
+  <script>
+    function Statistic() {
+      var kq = "";
+      var text = document.getElementById("input").value;
+      text = text.trim();
+      //Đếm số kí tự trong chuỗi
+      let charArray = text.split("");
+      var countChar = charArray.length;
+      //Đếm số từ trong chuỗi
+      let words = text.split(" ");
+      var countWord = 0;
+      for (var i = 0; i < words.length; i++) {
+        if (words[i] != "") {
+          countWord = countWord + 1;
+        }
+      }
+      //Đếm số lượng từng kí tự trong chuỗi
+
+      /**Khai báo mảng đếm số lượng từng kí tự trong chuỗi
+       * và khởi tạo bằng 0
+       */
+      const arrayCheck = [128];
+      for (var i = 0; i < 128; i++) {
+        arrayCheck[i] = 0;
+      }
+      /*Khai báo mảng trung gian để lưu giá mảng chứa từng kí tự
+        để viết hoa hết tất cả kí tự
+        */
+      let temp = charArray;
+      for (var i = 0; i < temp.length; i++) {
+        temp[i] = temp[i].toUpperCase();
+      }
+      //Chuyển mảng kí tự thành chuỗi sau khi được viết hoa
+      temp = temp.join("");
+      /*Cập nhật giá trị ở từng phần tử của mảng đếm số lượng
+        từng kí tự*/
+      for (var i = 0; i < temp.length; i++) {
+        if (
+          (temp[i] != "" && temp[i] >= "A" && temp[i] <= "Z") ||
+          (temp[i] >= "0" && temp[i] <= "9")
+        ) {
+          arrayCheck[temp.charCodeAt(i)] += 1;
+        }
+      }
+      //Xuất kết quả
+      kq =
+        "Characters: " + countChar + "<br/>" + "Words: " + countWord + "<br/>";
+      for (var i = 0; i < arrayCheck.length; i++) {
+        if (arrayCheck[i] > 0) {
+          /*Dùng đối tượng String và gọi phương thức fromCharCode()
+                để chuyển mã ASCII sang kí tự và xuất kết quả*/
+          kq +=
+            "Character '" +
+            String.fromCharCode(i) +
+            "': " +
+            arrayCheck[i] +
+            "<br/>";
+        }
+      }
+      //Xuất kết quả
+      document.getElementById("kq").innerHTML = kq;
+    }
+  </script>
+  <body>
+    <div id="main">
+      <table>
+        <caption>
+          <h2>String Statistic</h2>
+        </caption>
+        <tr>
+          <td>String:</td>
+          <td>
+            <input type="text" id="input" />
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <button type="button" onclick="Statistic()">Statistic</button>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td id="kq"></td>
+        </tr>
+      </table>
+    </div>
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

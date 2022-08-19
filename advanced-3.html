@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADVANCED 03</title>
+    <script
+      src="https://kit.fontawesome.com/c2e3085cbe.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+      }
+
+      .board {
+        position: absolute;
+        top: 100px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 320px;
+        height: 320px;
+      }
+
+      .cell {
+        display: flex;
+        flex-direction: row;
+        border: 1px solid black;
+        width: 100px;
+        height: 100px;
+        margin: 0px 2px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      i.fa-times {
+        font-size: 70px;
+        color: blue;
+      }
+
+      i.fa-circle-notch {
+        font-size: 60px;
+        color: red;
+      }
+
+      button#restart {
+        position: absolute;
+        top: 450px;
+        padding: 10px 20px;
+      }
+
+      #cover {
+        position: absolute;
+        display: none;
+        background-color: blueviolet;
+        top: 100px;
+        width: 320px;
+        height: 320px;
+        opacity: 0;
+      }
+
+      #back-btn {
+        margin-top: 500px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="margin-bottom: -10px">CHÚC BẠN VUI VẺ</h1>
+    <h2 id="result" style="display: none; color: red; margin-top: 20px"></h2>
+    <div class="board" id="board">
+      <div class="cell" stt="0"></div>
+      <div class="cell" stt="1"></div>
+      <div class="cell" stt="2"></div>
+      <div class="cell" stt="3"></div>
+      <div class="cell" stt="4"></div>
+      <div class="cell" stt="5"></div>
+      <div class="cell" stt="6"></div>
+      <div class="cell" stt="7"></div>
+      <div class="cell" stt="8"></div>
+    </div>
+    <button id="restart">Chơi lại</button>
+    <div id="cover"></div>
+    <p id="back-btn" align="center"><a href="/advance.html">Về trang BTNC</a></p>
+    <script>
+      //Mảng gồm các điều kiện thắng
+      const WINNING_COMBINATION = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+      ];
+      //Hàm đổi lượt chơi
+      function swapTurn() {
+        circleTurn = !circleTurn;
+      }
+      //Hàm kiểm tra bàn cờ đầy
+      function isFull() {
+        var flag = true;
+        var check = $(".board").children();
+        for (var i = 0; i < check.length; i++) {
+          if (check[i].innerHTML != "") {
+            flag = true;
+          } else {
+            return false;
+          }
+        }
+        return flag;
+      }
+      /*-------------------------------------------------------------*/
+      //Hàm kiểm tra thắng
+      function checkWin(list) {
+        var x = 0;
+        for (var i = 0; i < WINNING_COMBINATION.length; i++) {
+          if (
+            list.includes(WINNING_COMBINATION[i][0]) &&
+            list.includes(WINNING_COMBINATION[i][1]) &&
+            list.includes(WINNING_COMBINATION[i][2])
+          ) {
+            return true;
+          }
+        }
+        return false;
+      }
+      /*-------------------------------------------------------------*/
+      //Hàm xóa mảng
+      function resetArray(array) {
+        array.splice(0, array.length);
+      }
+      /*----------------------------------------------------------------*/
+      var circleTurn = false;
+      var listX = [];
+      var listO = [];
+      var indexX = 0;
+      var indexO = 0;
+      $(".cell").click(function () {
+        if ($(this).html() === "") {
+          if (circleTurn === false) {
+            listX[indexX++] = parseInt($(this).attr("stt"));
+            $(this).html('<i class="fas fa-times"></i>');
+            swapTurn();
+          } else if (circleTurn === true) {
+            listO[indexO++] = parseInt($(this).attr("stt"));
+            $(this).html('<i class="fas fa-circle-notch"></i>');
+            swapTurn();
+          }
+        }
+        //Sắp xếp mảng để so với WINING_COMBINATION
+        listX.sort(function (a, b) {
+          return a - b;
+        });
+        listO.sort(function (a, b) {
+          return a - b;
+        }); 
+
+        if (listX.length > 0 && listO.length > 0) {
+          if (checkWin(listX) === true) {
+            $("h2#result").text("X Win!");
+            $("h2#result").css("display", "block");
+            $('#cover').css('display', 'block');
+            resetArray(listX);
+            resetArray(listO);
+          }
+
+          if (checkWin(listO) === true) {
+            $("h2#result").text("O Win!");
+            $("h2#result").css("display", "block");
+            $('#cover').css('display', 'block');
+            resetArray(listX);
+            resetArray(listO);
+          }
+
+          if (isFull() === true) {
+            $("h2#result").text("Bàn cờ đầy!");
+            $("h2#result").css("display", "block");
+            $('#cover').css('display', 'block');
+            resetArray(listX);
+            resetArray(listO);
+          }
+        }
+      });
+
+      //Chơi lại
+      $("button#restart").click(function () {
+        $("h2#result").css("display", "none");
+        $(".cell").html("");
+        $('#cover').css('display', 'none');
+      });
+    </script>
+  </body>
+</html>

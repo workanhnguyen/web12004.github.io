@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADVANCED 01</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var recover = $("#content").html(); //Chuỗi để khôi phục
+        //Thay đổi
+        $("button#replace").click(function () {
+          var toFindString = $("input#found-string").val();
+          var toReplaceString = $("input#replacing-string").val();
+          var htmlContent = $("#content").children();
+          console.log(htmlContent);
+          //......................................................................
+          if (document.getElementById("capitalize").checked === true) {
+              var toFindString_sensitive = new RegExp(toFindString, 'g');
+              for (var i = 0; i < htmlContent.length; i++) {
+                htmlContent[i].innerHTML = htmlContent[i].innerHTML.replace(toFindString_sensitive, toReplaceString);
+              }
+          } else {
+              var toFindString_inSensitive = new RegExp(toFindString, 'gi'); //tìm và thay thế không quan trọng viết hoa
+              for (var i = 0; i < htmlContent.length; i++) {
+                htmlContent[i].innerHTML = htmlContent[i].innerHTML.replace(toFindString_inSensitive, toReplaceString);
+              }
+          }
+
+          //Cập nhật lại trạng thái
+          $("#content").html(htmlContent);
+          $("input#found-string").val("");
+          $("input#replacing-string").val("");
+          document.getElementById("capitalize").checked = false;
+        });
+        //Khôi phục
+        $("button#recover").click(function () {
+          $("#content").html(recover);
+        });
+      });
+    </script>
+    <style>
+      #content {
+        border: 2px solid #000;
+        padding: 10px;
+      }
+
+      input {
+        margin: 5px 0;
+      }
+
+      button {
+        margin: 5px 0;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tìm kiếm và thay thế</h1>
+    <hr />
+    <label for="found-string">Nhập chuỗi cần tìm</label>
+    <input type="text" id="found-string" placeholder="Nhập chuỗi cần tìm" />
+    <input type="checkbox" name="" id="capitalize" /> Có phân biệt chữ hoa<br />
+    <label for="replacing-string">Nhập chuỗi thay thế</label>
+    <input
+      type="text"
+      name=""
+      id="replacing-string"
+      placeholder="Nhập chuỗi thay thế"
+    /><br />
+    <button id="replace">Tìm và thay thế</button><br />
+    <button id="recover">Khôi phục</button>
+    <div id="content">
+      <h2>CHƯƠNG I. HTML</h2>
+      <p>
+        HTML (Hyperlink Markup Language) là một ngôn ngữ đánh dấu siêu văn bản,
+        được dùng để tạo ra hầu hết các trang web.
+      </p>
+      <h2>CHƯƠNG II. CSS</h2>
+      <p>
+        CSS là một ngôn ngữ định kiểu, một bộ quy tắc để mô tả các hiển thị của
+        các đối tượng trên trang web.
+      </p>
+      <h2>CHƯƠNG III. JAVASCRIPT</h2>
+      <p>
+        JavaScript là một ngôn ngữ lập trình xử lý trang web động phía client.
+      </p>
+      <h2>CHƯƠNG IV. JQUERY</h2>
+      <p>
+        JQuery là một thư viện các hàm JavaScript giúp nhà phát triển giảm thiểu
+        số lượng mà lệnh khi viết code với JavaScript.
+      </p>
+    </div>
+    <p id="back-btn" align="center"><a href="./advance.html">Về trang BTNC</a></p>
+  </body>
+</html>

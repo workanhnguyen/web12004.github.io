@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 15</title>
+    <style>
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      function Resize() {
+        var size = document.getElementsByName("resize");
+        for (var i = 0; i < size.length; i++) {
+          if (size[i].checked === true) {
+            var scale = size[i].value;
+          }
+        }
+        if (scale == "10%") {
+          document.getElementById("kq").style.width = "10%";
+        } else if (scale == "25%") {
+          document.getElementById("kq").style.width = "25%";
+        } else if (scale == "50%") {
+          document.getElementById("kq").style.width = "50%";
+        } else {
+          document.getElementById("kq").style.width = "100%";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Image Resizing</h2>
+    <hr />
+    <form>
+      Scale:
+      <input type="radio" name="resize" value="10%" onclick="Resize()" /> 10%
+      <input type="radio" name="resize" value="25%" onclick="Resize()" /> 25%
+      <input type="radio" name="resize" value="50%" onclick="Resize()" /> 50%
+      <input type="radio" name="resize" value="100%" onclick="Resize()" /> 100%
+    </form>
+    <img src="/Images/js14-chicken.png" alt="chicken" id="kq" width="100%" />
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

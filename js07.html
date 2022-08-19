@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 7</title>
+    <style>
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        margin-bottom: 50px;
+      }
+
+      table,
+      tr,
+      td {
+        width: 500px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        margin: auto;
+        border-collapse: collapse;
+      }
+
+      #back-btn {
+        border: none;
+        margin: 0 auto;
+      }
+
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      //Hàm trả về lựa chọn của thẻ select
+      function validateSelectBox(obj) {
+        var options = obj.children; //Lấy thông tin thẻ con --> option
+        var interest = "";
+        for (var i = 0; i < options.length; i++) {
+          if (options[i].selected === true) {
+            interest += options[i].value;
+          }
+        }
+        return interest;
+      }
+      function info() {
+        var str = ""; //Khai báo chuỗi rỗng
+        var name = document.getElementById("loginName").value; //Tên
+        var gender = document.getElementsByName("gender"); //Giới tính
+        //Hàm lấy giới tính
+        for (var i = 0; i < gender.length; i++) {
+          if (gender[i].checked === true) {
+            var gender = gender[i].value;
+          }
+        }
+        if (gender == 0) {
+          s = "Nam";
+        } else if (gender == 1) {
+          s = "Nữ";
+        } else {
+          s = "";
+        }
+        //Lấy password
+        var password = document.getElementById("pwd").value;
+        //Lấy ngày sinh
+        var birthday = document.getElementById("birth").value.split("-");
+        var date = birthday[2] + "/" + birthday[1] + "/" + birthday[0];
+        //Dùng str để in ra
+        if (
+          name &&
+          s &&
+          password &&
+          birthday &&
+          validateSelectBox(document.getElementById("interest"))
+        ) {
+          str +=
+            "Chào mừng " +
+            name +
+            "\n" +
+            "Bạn là " +
+            s +
+            "\n" +
+            "Mật khẩu của bạn có " +
+            password.length +
+            " kí tự\n" +
+            "Bạn sinh ngày " +
+            date +
+            "\n" +
+            "Vấn đề bạn quan tâm là " +
+            validateSelectBox(document.getElementById("interest"));
+          document.getElementById("kq").innerHTML = str;
+        } else {
+          document.getElementById("kq").innerHTML =
+            "Vui lòng kiểm tra lại thông tin!";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>ĐĂNG KÍ THÀNH VIÊN</h2>
+    <form>
+      <table>
+        <tr>
+          <td>Tên đăng nhập</td>
+          <td>
+            <input type="text" id="loginName" required autocomplete="off" />
+          </td>
+        </tr>
+        <tr>
+          <td>Mật khẩu</td>
+          <td>
+            <input type="password" id="pwd" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Ngày sinh</td>
+          <td>
+            <input type="date" id="birth" autocomplete="off" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Giới tính</td>
+          <td>
+            <input type="radio" name="gender" value="0" required /> Nam
+            <input type="radio" name="gender" value="1" required /> Nữ
+          </td>
+        </tr>
+        <tr>
+          <td>Vấn đề bạn quan tâm</td>
+          <td>
+            <select onchange="validateSelectBox(this)" id="interest" required>
+              <option value="Kinh tế">Kinh tế</option>
+              <option value="Thể thao">Thể thao</option>
+              <option value="Văn hóa nghệ thuật">Văn hóa nghệ thuật</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="button" onclick="info()">Đăng kí</button>
+          </td>
+          <td>
+            <button type="reset">Hủy</button>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <textarea id="kq" cols="60" rows="10"></textarea>
+          </td>
+        </tr>
+      </table>
+    </form>
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

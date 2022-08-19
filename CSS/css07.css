@@ -1,0 +1,36 @@
+body {
+    font-family: helvetica, sans-serif;
+    width: 50%;
+    margin: auto;
+}
+hr {
+    border-color: rgb(110, 226, 255);
+}
+h1 {
+    margin-bottom: 0;
+    color: rgb(43, 75, 255);
+}
+img {
+    width: 150px;
+    height: 150px;
+    float: right;
+    padding: 10px;
+    padding-top: 30px;
+}
+nav {
+    background-color: rgb(110, 226, 255);
+    width: 100%;
+    height: 30px;
+}
+nav>a {
+    float: left;
+    width: 100px;
+    text-align: center;
+    line-height: 30px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+nav>a:hover {
+    background-color: rgb(145, 238, 255);
+}

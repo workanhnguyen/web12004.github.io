@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVASCRIPT 1</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        h2 {
+            text-align: center;
+        }
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+        td {
+            text-align: left;
+        }
+        #back-btn {
+            margin-top: 50px;
+        }
+
+        #back-btn a {
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(to bottom,#f0355c, #f25e4c);
+        }
+
+        #back-btn a:hover {
+            background: #6150ff;
+        }
+    </style>
+    <script>
+        function calcAge() {
+            var d = new Date();
+            name = document.getElementById("name").value;
+            year = document.getElementById("year").value;
+            if (name && year) {
+                age = d.getFullYear() - year;
+                document.getElementById("kq").innerHTML = 
+                "Chào bạn " + name + "!" + "<br>" +
+                "Tuổi của bạn là " + age;
+            } else {
+                alert('Vui lòng kiểm tra lại thông tin!');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>CHƯƠNG TRÌNH TÍNH TUỔI</h2>
+    <table>
+        <tr>
+            <td>
+                <label for="name">Nhập vào tên bạn:</label>
+            </td>
+            <td>
+                <input type="text" id="name">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="year">Nhập vào năm sinh:</label>
+            </td>
+            <td>
+                <input type="text" id="year">
+            </td>
+        </tr>
+    </table>
+    <br/>
+    <button type="button" onclick="calcAge()">Tính tuổi</button>
+    <p id="kq"></p>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+</body>
+</html>

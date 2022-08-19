@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JAVASCRIPT 4</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            margin: auto;
+            margin-bottom: 50px;
+        }
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+            line-height: 21px;
+            padding-left: 2px;
+            border: 1px solid gray;
+            border-radius: 2px;
+            width: 177px;
+            height: 21px;
+        }
+
+        #back-btn {
+            border: none;
+            margin: 0 auto;
+        }
+
+        #back-btn a {
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 10px;
+            color: white;
+            background: linear-gradient(to bottom,#f0355c, #f25e4c);
+        }
+
+        #back-btn a:hover {
+            background: #6150ff;
+        }
+    </style>
+    <script>
+        function Calc() {
+            var a = parseInt(document.getElementById("number1").value);
+            var b = parseInt(document.getElementById("number2").value);
+            var checkbox = document.getElementsByName("pheptoan");
+                for (var i = 0; i < checkbox.length; i++){
+                    if (checkbox[i].checked === true){
+                        var operator = checkbox[i].value;
+                    }
+                }
+            if (operator == 1) {
+                document.getElementById("kq").innerHTML = a + b;
+            }
+            else if (operator == 2) {
+                document.getElementById("kq").innerHTML = a - b;
+            }
+            else if (operator == 3) {
+                document.getElementById("kq").innerHTML = a * b;
+            }
+            else if (operator == 4) {
+                document.getElementById("kq").innerHTML = a / b;
+            }
+        };
+    </script>
+</head>
+<body>
+    <form>
+        <h2>CÁC PHÉP TÍNH SỐ HỌC</h2>
+        <table>
+            <tr>
+                <td>Số thứ 1</td>
+                <td>
+                    <input type="text" id="number1">
+                </td>
+            </tr>
+            <tr>
+                <td>Số thứ 2</td>
+                <td>
+                    <input type="text" id="number2">
+                </td>
+            </tr>
+            <tr>
+                <td>Chọn phép toán</td>
+                <td>
+                    <input name="pheptoan" type="radio" value="1" checked />Cộng <br/>
+                    <input name="pheptoan" type="radio" value="2" />Trừ <br/>
+                    <input name="pheptoan" type="radio" value="3" />Nhân <br/>
+                    <input name="pheptoan" type="radio" value="4" />Chia <br/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="button" onclick="Calc()">Thực hiện</button>
+                </td>
+                <td>
+                    <p id="kq"></p>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <p id="back-btn" align="center"><a href="/javascript.html">Về trang JavaScript</a></p>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADVANCED 02</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var ballWidth;
+      var ballHeight;
+      var dx = 5;
+      var dy = 5;
+      $(document).ready(function () {
+        ballWidth = $("#ball").width();
+        ballHeight = $("#ball").height();
+        setInterval(Play, 20);
+      });
+
+      function Play() {
+        var frameWidth = $("#frame").width();
+        var frameHeight = $("#frame").height();
+        var ballLeft = parseInt($("#ball").css("left"));
+        var ballTop = parseInt($("#ball").css("top"));
+        if (ballLeft < 0 || ballLeft + ballWidth >= frameWidth) {
+          dx = -dx;
+        }
+        if (ballTop < 0 || ballTop + ballHeight >= frameHeight) {
+          dy = -dy;
+        }
+        $("#ball").css("left", ballLeft + dx + "px");
+        $("#ball").css("top", ballTop + dy + "px");
+      }
+    </script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #frame {
+        position: relative;
+        width: 1000px;
+        height: 500px;
+        margin: 0 auto;
+        background-color: rgb(245, 241, 239);
+        border: 1px solid black;
+      }
+
+      #frame img {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 100px;
+        height: 100px;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="frame">
+      <img id="ball" src="/Images/ball.png" alt="Quả bóng" />
+    </div>
+    <p id="back-btn" align="center">
+      <a href="/advance.html">Về trang BTNC</a>
+    </p>
+  </body>
+</html>

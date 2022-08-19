@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cờ caro</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        canvas {
+            border: 1px solid blue;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        turn = 0; //Chẵn là X, lẻ là O, lưu số ô đã check --> bàn cờ đầy
+        finished = false; //Ván cờ đã kết thúc chưa, TH1: bàn cờ đầy, TH2: có 1 bên thắng
+        function init() {
+            arrBoard = new Array(); //Mảng lưu trạng thái các ô cờ, chứa X - O - trống
+            //Khởi tạo toàn bộ là trống
+            for (var i = 0; i < 9; i++){
+                arrBoard[i] = '';
+            }
+            //Mảng lưu các vị trí điều kiện thắng
+            arrWinning = [
+                [0, 1, 2],
+                [3, 4, 5],
+                [6, 7, 8],
+                [0, 3, 6],
+                [1, 4, 7],
+                [2, 5, 8],
+                [0, 4, 8],
+                [2, 4, 6]
+            ];
+        }
+        
+        function checkWinner(symbol) {
+            for (var i = 0; i < arrWinning; i++) {
+                if (arrBoard[arrWinning[i][0]] == symbol && arrBoard[arrWinning[i][1]] == symbol && arrBoard[arrWinning[i][2]] == symbol) {
+                    $('#kq').text(`${symbol} thắng`);
+                    return true;
+                }
+            }
+            return false;
+        }
+        $(document).ready(function () {
+            init();
+            //Xử lý sự kiện click lên canvas
+           
+            $('canvas').click(function () {
+                if (finished) return;
+                canvasID = $(this).attr('id');
+                canvasObj = document.getElementById(canvasID);
+                context = canvasObj.getContext('2d');
+                canvasNumber = parseInt(canvasID.substr(canvasID.length - 1));
+                console.log(canvasNumber);
+                if (arrBoard[canvasNumber] == '') { //Chứa ô trống thì mới vẽ được
+                    if (turn % 2 == 0) {
+                        context.moveTo(10, 10);
+                        context.lineTo(40, 40);
+
+                        context.moveTo(40, 10);
+                        context.lineTo(10, 40);
+                        context.strokeStyle = 'blue';
+                        context.lineWidth = 4;
+                        context.stroke();
+                        arrBoard[canvasNumber] = 'X';
+                    }
+                    else {
+                        context.fillStyle = 'red';
+                        context.arc(25, 25, 20, 0, Math.PI*2);
+                        context.fill();
+                        arrBoard[canvasNumber] = 'O';
+                    }
+                    turn++;
+                    finished = checkWinner(arrBoard[canvasNumber]);
+                    if (finished) return;
+                    if (turn == 9) {
+                        $('#kq').text('Bàn cờ đầy!');
+                    }
+                }
+                $('#doiMau').click(function () {
+                colorOfX = $('#colorX').val();
+                colorOfO = $('#colorO').val();
+                colorOfBackground = $('#colorBg').val()
+                colorOfFrame = $('#colorFrame').val();
+                if (finished) {
+                    for (var i = 0; i < 9; i++) {
+                        canvasObj = document.getElementById(`canvas${i}`);
+                        context = canvasObj.getContext('2d');
+                        context.rect(0, 0, 50, 50);
+                        context.strokeStyle = `${colorOfBackground}`;
+                        context.fill();
+                        if (arrBoard[i] == 'X') {
+                            canvasObj = document.getElementById(`canvas${i}`);
+                            context = canvasObj.getContext('2d');
+                            context.moveTo(10, 10);
+                            context.lineTo(40, 40);
+
+                            context.moveTo(40, 10);
+                            context.lineTo(10, 40);
+                            context.strokeStyle = `${colorOfX}`;
+                            context.lineWidth = 4;
+                            context.stroke();
+                        }
+                        else if (arrBoard[i] == 'O') {
+                            canvasObj = document.getElementById(`canvas${i}`);
+                            context = canvasObj.getContext('2d');
+                            context.fillStyle = `${colorOfO}`;
+                            context.arc(25, 25, 20, 0, Math.PI*2);
+                            context.fill();
+                        }
+                    }
+                }
+            });
+            });
+            $('#restart').click(function () {
+                location.reload();
+            })
+            
+        });
+    </script>
+</head>
+<body>
+    <h1>CHÚC BẠN VUI VẺ</h1>
+    Màu X
+    <input type="color" id="colorX"><br>
+    Màu O
+    <input type="color" id="colorO"><br>
+    Màu nền
+    <input type="color" id="colorBg"><br>
+    Màu khung
+    <input type="color" id="colorFrame"><br><br>
+    <button id="doiMau">Đổi màu</button><br><br>
+    <canvas id="canvas0" width="50" height="50"></canvas>
+    <canvas id="canvas1" width="50" height="50"></canvas>
+    <canvas id="canvas2" width="50" height="50"></canvas><br>
+    <canvas id="canvas3" width="50" height="50"></canvas>
+    <canvas id="canvas4" width="50" height="50"></canvas>
+    <canvas id="canvas5" width="50" height="50"></canvas><br>
+    <canvas id="canvas6" width="50" height="50"></canvas>
+    <canvas id="canvas7" width="50" height="50"></canvas>
+    <canvas id="canvas8" width="50" height="50"></canvas><br><br>
+    <h3 id="kq"></h3>
+    <button id="restart">Chơi lại</button>
+</body>
+</html>

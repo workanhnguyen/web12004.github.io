@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("button").click(function () {
+          var t1 = $('#day-start').val();
+          var t2 = $('#day-end').val();
+          var d1 = new Date(t1);
+          var d2 = new Date(t2);
+          var songay = (d2.getTime() - d1.getTime())/(24*3600*1000);
+          $('#kq').text(`Số ngày là: ${songay}`);
+        });
+      });
+    </script>
+    <style>
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <label for="day-start">Từ ngày: </label>
+        </td>
+        <td><input type="date" id="day-start" /> <br /></td>
+      </tr>
+      <tr>
+        <td>
+          <label for="day-end">Đến ngày: </label>
+        </td>
+        <td>
+          <input type="date" id="day-end" />
+        </td>
+      </tr>
+    </table>
+    <button>Tính số ngày</button>
+    <div id="kq"></div>
+    <div id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></div>
+  </body>
+</html>

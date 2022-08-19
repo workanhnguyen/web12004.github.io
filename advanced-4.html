@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADVANCED 04</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      #main {
+        position: relative;
+        width: 1000px;
+        height: 500px;
+        border: 1px solid green;
+        text-align: center;
+        margin: auto;
+      }
+
+      h1 {
+        color: blue;
+      }
+
+      p {
+        color: green;
+        font-weight: bold;
+      }
+
+      .animal {
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        width: fit-content;
+      }
+
+      .animal img {
+        position: absolute;
+      }
+
+      .animal img:first-child {
+        top: 15px;
+        left: 0px;
+      }
+
+      .animal img:nth-child(1) {
+        top: 100px;
+        left: 0px;
+      }
+
+      .animal img:nth-child(2) {
+        top: 200px;
+        left: 0px;
+      }
+
+      .btn {
+        position: absolute;
+        top: 470px;
+        left: 0px;
+        right: 0px;
+      }
+
+      #result {
+        font-size: 30px;
+        text-align: center;
+        color: red;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      var play;
+      function playGame() {
+        play = setInterval(() => {
+          if (
+            parseInt($("#horse").css("left")) <= 900 &&
+            parseInt($("#rabit").css("left")) <= 900 &&
+            parseInt($("#tutle").css("left")) <= 900
+          ) {
+            var move_horse = Math.round(Math.random() * 5);
+            var move_rabit = Math.round(Math.random() * 5);
+            var move_tutle = Math.round(Math.random() * 5);
+            $("#horse").css(
+              "left",
+              move_horse + parseInt($("#horse").css("left"))
+            );
+            $("#rabit").css(
+              "left",
+              move_rabit + parseInt($("#rabit").css("left"))
+            );
+            $("#tutle").css(
+              "left",
+              move_tutle + parseInt($("#tutle").css("left"))
+            );
+          } else {
+            clearInterval(play);
+            console.log(parseInt($("#horse").css("left")));
+            console.log(rankGame());
+          }
+        }, 20);
+      }
+
+      function rankGame() {
+        if (parseInt($("#horse").css("left")) >= 900) {
+          $("#result").text("NGỰA THẮNG!");
+        }
+        if (parseInt($("#rabit").css("left")) >= 900) {
+          $("#result").text("THỎ THẮNG!");
+        }
+        if (parseInt($("#tutle").css("left")) >= 900) {
+          $("#result").text("RÙA THẮNG!");
+        }
+      }
+
+      function stopGame() {
+        clearInterval(play);
+        $("#result").text("");
+      }
+
+      function resetGame() {
+        stopGame();
+        $("#horse").css("left", "0px");
+        $("#rabit").css("left", "0px");
+        $("#tutle").css("left", "0px");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <h1>CUỘC ĐUA KÌ THÚ</h1>
+      <p>Ngựa - Rùa - Thỏ</p>
+      <div class="animal">
+        <img id="tutle" src="/Images/tutle.png" alt="Tutle" />
+        <img id="rabit" src="/Images/rabit.png" alt="Rabit" />
+        <img id="horse" src="/Images/horse.png" alt="Horse" />
+      </div>
+      <div class="btn">
+        <button id="play" onclick="playGame()">Play</button>
+        <button id="stop" onclick="stopGame()">Stop</button>
+        <button id="reset" onclick="resetGame()">Reset</button>
+      </div>
+    </div>
+    <div id="result"></div>
+    <p id="back-btn" align="center">
+      <a href="/advance.html">Về trang BTNC</a>
+    </p>
+  </body>
+</html>

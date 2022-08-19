@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 03</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 400px;
+      }
+      tr,
+      td {
+        padding: 5px;
+        border: 2px solid orange;
+      }
+      th {
+        padding: 5px;
+        border: 2px solid greenyellow;
+        background-color: lightblue;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $("button.change").click(function () {
+          $("tr:nth-child(even)").css("background-color", "pink");
+        });
+
+        $("button.default").click(function () {
+          $("tr:nth-child(even)").css("background-color", "white");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <table>
+      <caption>
+        <h2>BẢNG GIÁ VẬT TƯ</h2>
+      </caption>
+      <tr>
+        <th>Tên vật tư</th>
+        <th>Đơn vị tính</th>
+        <th>Đơn giá</th>
+      </tr>
+      <tr>
+        <td>Cát</td>
+        <td>Khối</td>
+        <td>77,000</td>
+      </tr>
+      <tr>
+        <td>Đá</td>
+        <td>Khối</td>
+        <td>90,000</td>
+      </tr>
+      <tr>
+        <td>Xi măng Hà Tiên loại 1</td>
+        <td>Bao</td>
+        <td>120,000</td>
+      </tr>
+      <tr>
+        <td>Xi măng Hà Tiên loại 2</td>
+        <td>Bao</td>
+        <td>100,000</td>
+      </tr>
+    </table>
+    <button class="change">Đổi màu nền</button>
+    <button class="default">Màu nền mặc định</button>
+    <div id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></div>
+  </body>
+</html>

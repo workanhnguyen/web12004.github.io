@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JAVASCRIPT 16</title>
+    <style>
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main" style="width: 300px; height: 300px; margin: 0 auto">
+      <canvas id="drawing" width="300px" height="300px"></canvas>
+    </div>
+    <script>
+      var canvas = document.getElementById("drawing");
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "cyan";
+      ctx.fillRect(0, 0, 300, 300);
+
+      var grd1 = ctx.createLinearGradient(0, 0, 0, 150);
+      grd1.addColorStop(0, "red");
+      grd1.addColorStop(1, "white");
+      ctx.fillStyle = grd1;
+      ctx.beginPath();
+      ctx.arc(150, 150, 150, 0, Math.PI, true);
+      ctx.fill();
+      ctx.stroke();
+
+      var grd2 = ctx.createLinearGradient(0, 150, 0, 300);
+      grd2.addColorStop(0, "white");
+      grd2.addColorStop(1, "red");
+      ctx.fillStyle = grd2;
+      ctx.beginPath();
+      ctx.arc(150, 150, 150, 0, Math.PI);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.lineWidth = "4";
+      ctx.strokeStyle = "red";
+      ctx.moveTo(1, 149);
+      ctx.lineTo(149, 1);
+      ctx.lineTo(299, 149);
+      ctx.lineTo(149, 299);
+      ctx.lineTo(1, 149);
+      ctx.strokeStyle = "red";
+      ctx.stroke();
+      ctx.fillStyle = "yellow";
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.lineWidth = "3";
+      ctx.font = "750 60px sans-serif";
+      ctx.strokeStyle = "blue";
+      ctx.strokeText("HTML5", 50, 170);
+    </script>
+    <p id="back-btn" align="center">
+      <a href="/javascript.html">Về trang JavaScript</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JQUERY 08</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        //Màu nền cho các phần tử li chẵn / lẻ
+        $("ol#string li:nth-child(even)").css("background-color", "cyan");
+        $("ol#string li:nth-child(odd)").css("background-color", "violet");
+        //Gán chuỗi vào phần hiển thị kết quả
+        $("ol#string li").click(function () {
+          var number = $(this).attr("stt");
+          var str = $("ol#string li").eq(number).text();
+          if (str) {
+            $("#result").html(`${str}`);
+          }
+        });
+
+        $("#edit").click(function (event) {
+          var typeText = $('input[name="type-text"]:checked').val();
+          var colorText = $('input[type="color"]').val();
+          if ($("#result").text() !== null) {
+            //Bóng của chữ
+            if (typeText === "shadow") {
+              $("#result").css({
+                "text-shadow": "5px 5px 5px black",
+              });
+            } else {
+              $("#result").css({
+                "text-shadow": "none",
+              });
+            }
+            //Màu của chữ
+            $("#result").css("color", colorText);
+          }
+        });
+        //Xóa phần tử li
+        var num = parseInt($("ol#string li").length) - 1;
+        $("#del-last").click(function () {
+          if (num >= 0) {
+            $("ol#string li")
+              .eq(num--)
+              .hide();
+          }
+        });
+        //Phục hồi phần tử li
+        $("#recover").click(function () {
+          if (num <= 2) {
+            $("ol#string li")
+              .eq(++num)
+              .show();
+          }
+        });
+      });
+    </script>
+    <style>
+      #main {
+        display: flex;
+        flex-direction: row;
+      }
+
+      #edit {
+        width: 49%;
+        background-color: lemonchiffon;
+        height: 323px;
+      }
+
+      #edit input#color-text {
+        margin-top: 10px;
+      }
+
+      #edit button {
+        margin-top: 10px;
+      }
+
+      ol#string > li {
+        padding: 5px 10px;
+      }
+
+      ol#string > li:hover {
+        cursor: pointer;
+      }
+
+      #result {
+        width: 49%;
+        height: 323px;
+        margin-left: 20px;
+        margin-top: 0px;
+        background-color: lemonchiffon;
+        font-size: 50px;
+        text-align: center;
+        line-height: 323px;
+      }
+
+      #back-btn {
+        margin-top: 50px;
+      }
+      #back-btn a {
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 10px;
+        color: white;
+        background: linear-gradient(to bottom, #f0355c, #f25e4c);
+      }
+
+      #back-btn a:hover {
+        background: #6150ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <div id="edit">
+        <form>
+          <fieldset>
+            <legend>Chọn</legend>
+            <input type="radio" name="type-text" value="normal" checked />Chữ
+            bình thường <br />
+            <input type="radio" name="type-text" value="shadow" />Chữ có bóng
+            <br />
+            Chọn màu chữ <input type="color" id="color-text" value="#0000ff"/> <br />
+            <button type="button" id="del-last">Xóa phần tử cuối</button>
+            <button type="button" id="recover">Phục hồi</button>
+          </fieldset>
+        </form>
+        <form>
+          <fieldset>
+            <legend>Click vào một chuỗi</legend>
+            <ol type="1" id="string">
+              <li stt="0">HTML</li>
+              <li stt="1">CSS</li>
+              <li stt="2">JQUERY</li>
+              <li stt="3">JAVASCRIPT</li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <h1 id="result"></h1>
+    </div>
+    <p id="back-btn" align="center"><a href="/jquery.html">Về trang JQUERY</a></p>
+  </body>
+</html>

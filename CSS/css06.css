@@ -1,0 +1,15 @@
+.root div {
+    float: left;
+    border: 2px solid black;
+    margin: 10px;
+    width: 200px;
+    height: 110px;
+    background-color: yellow;
+}
+.root div:nth-child(2) {
+    clear: both;
+    overflow: hidden;
+}
+.root div:last-child {
+    overflow: scroll;
+}
